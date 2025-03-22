@@ -86,9 +86,47 @@ class Test {
 document.addEventListener('click', async () => {}); */
 
 //! ===============================================
-async function getPokemon() {
+/* async function getPokemon() {
   const url = 'https://pokeapi.co/api/v2/pokemon';
 
   const res = await fetch(url);
   const data = await res.json();
+
+  console.log(data);
+  return data;
 }
+const pokemons = getPokemon(); */
+
+//! ===============================================
+/* async function getArr() {
+  return 'Hello world';
+}
+const res = getArr();
+console.log(res); */
+
+//! ===============================================
+/* async function getPokemons() {
+  const url = 'https://pokeapi.co/api/v2/pokemon';
+
+  try {
+    const response1 = await fetch(url);
+    const data1 = await response1.json();
+    const url2 = data1.results[0].url;
+    const res2 = await fetch(url2);
+    const pokemon = await res2.json();
+    return pokemon;
+  } catch (err) {
+    console.log(err);
+  }
+}
+getPokemons(); */
+
+//! ===============================================
+/* async function test() {
+  try {
+    const res = await fetch('');
+    console.log();
+  } catch {
+    console.log(err);
+  }
+} */
