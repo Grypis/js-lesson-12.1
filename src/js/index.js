@@ -34,9 +34,61 @@ get()
 getPokemons(); */
 
 //! ================
-async function getPokemons() {
+/* async function getPokemons() {
   const url = 'https://pokeapi.co/api/v2/pokemon';
 
   const response = await fetch(url);
-  console.log(response);
+  const data = await response.json();
+  return data;
+}
+
+getPokemons(); */
+
+//! ================
+/* async function getPokemons() {
+  const url = 'https://pokeapi.co/api/v2/pokemon';
+
+  const response1 = await fetch(url);
+  const data1 = await response1.json();
+
+  const url2 = data1.results[0].url;
+  const res2 = await fetch(url2);
+  const pokemon = await res2.json();
+
+  console.log(pokemon);
+}
+
+getPokemons(); */
+
+//! ===============================================
+/* async function test() {
+  const promise = Promise.resolve('Hello world');
+
+  const result = await promise;
+
+  console.log(result);
+}
+test(); */
+
+//! ===============================================
+/* async function name(params) {}
+
+const arrow = async () => {};
+
+const user = {
+  async showInfo() {},
+};
+
+class Test {
+  async showInfo() {}
+}
+
+document.addEventListener('click', async () => {}); */
+
+//! ===============================================
+async function getPokemon() {
+  const url = 'https://pokeapi.co/api/v2/pokemon';
+
+  const res = await fetch(url);
+  const data = await res.json();
 }
