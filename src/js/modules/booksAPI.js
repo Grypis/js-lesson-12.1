@@ -1,23 +1,8 @@
-import Axios from 'axios';
-// axios.defaults.baseURL = 'http://localhost:3000';
-// axios.defaults.headers = {
-//   API: 'Hello test',
-// };
-// axios.defaults.params = {
-//   param1: 'Hello',
-//   param2: 'Hello2',
-// };
+import axios from 'axios';
 
-const axios = Axios.create({
-  baseURL: 'http://localhost:3000/books',
-  headers: {
-    'X-RapidAPI-Host': 'awdawdawdawdawd',
-  },
-  params: {},
-});
-
+axios.defaults.baseURL = 'http://localhost:3000';
 //!======================================================
-/* const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3000';
 export function getAllBooks() {
   const END_POINT = '/books';
   const url = `${BASE_URL}${END_POINT}`;
@@ -93,10 +78,15 @@ export function deleteBook(id) {
   };
 
   return fetch(url, options);
-} */
-//!======================================================
+}
 
-export async function getAllBooks() {
+//!======================================================
+export async function getAllBooks1() {
+  const res = await axios.get('/books');
+  console.log(res);
+}
+getAllBooks1();
+/* export async function getAllBooks() {
   try {
     const res = await axios.get('');
     return res.data;
@@ -123,4 +113,4 @@ export async function resetBook({ id, ...book }) {
 export async function deleteBook(id) {
   const res = await axios.delete(`/${id}`);
   return res.data;
-}
+} */

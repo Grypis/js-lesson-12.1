@@ -68,7 +68,8 @@ async function onBookUpdate(e) {
     e.target.reset();
   } catch {}
 }
-function onBookReset(e) {
+
+async function onBookReset(e) {
   e.preventDefault();
 
   const formData = new FormData(e.target);
@@ -82,41 +83,39 @@ function onBookReset(e) {
     rating: Math.round(Math.random() * 10),
     price: Math.round(Math.random() * 1000),
   };
-
-  resetBook(id, book).then(res => {
+  try {
+    const res = await resetBook(id, book);
     const oldBook = document.querySelector(`.book-item[data-id="${id}"]`);
-
     const markup = bookTemplate(res);
-
     oldBook.insertAdjacentHTML('afterend', markup);
-
     oldBook.remove();
-  });
+  } catch {}
+
   e.target.reset();
 }
-
-function onBookDelete(e) {
+async function onBookDelete(e) {
   if (!e.target.dataset.type) return;
   const id = e.target.dataset.id;
-  deleteBook(id).then(() => {
+  try {
+    await deleteBook(id);
     const li = e.target.closest('li');
     li.remove();
-  });
+  } catch {}
+
   e.target.reset();
 }
 
 //!===============================================================
 
-function init() {
+async function init() {
   showLoader();
-  getAllBooks()
-    .then(data => {
-      const markup = booksTemplate(data);
-      refs.bookListElem.innerHTML = markup;
-    })
-    .finally(() => {
-      hideLoader();
-    });
+  try {
+    const data = await getAllBooks();
+    const markup = booksTemplate(data);
+    refs.bookListElem.innerHTML = markup;
+  } catch {}
+
+  hideLoader();
 }
 
 init();

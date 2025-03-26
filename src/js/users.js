@@ -42,7 +42,8 @@ async function onCreateUser(e) {
 
   e.target.reset();
 }
-function onUpdateUser(e) {
+
+async function onUpdateUser(e) {
   e.preventDefault();
 
   const myData = {};
@@ -54,16 +55,17 @@ function onUpdateUser(e) {
     }
   });
 
-  updateUser(myData).then(updatedUser => {
+  const updatedUser = await updateUser(myData);
+  try {
     const markup = userTemplate(updatedUser);
     const oldUser = document.querySelector(`[data-id="${myData.id}"]`);
     oldUser.insertAdjacentHTML('afterend', markup);
     oldUser.remove();
-  });
+  } catch {}
 
   e.target.reset();
 }
-function onResetUser(e) {
+async function onResetUser(e) {
   e.preventDefault();
 
   const myData = {};
@@ -73,12 +75,13 @@ function onResetUser(e) {
     myData[key] = value;
   });
 
-  resetUser(myData).then(updatedUser => {
+  const updatedUser = await resetUser(myData);
+  try {
     const markup = userTemplate(updatedUser);
     const oldUser = document.querySelector(`[data-id="${myData.id}"]`);
     oldUser.insertAdjacentHTML('afterend', markup);
     oldUser.remove();
-  });
+  } catch {}
 
   e.target.reset();
 }

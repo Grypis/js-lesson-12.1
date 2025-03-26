@@ -130,3 +130,31 @@ getPokemons(); */
     console.log(err);
   }
 } */
+
+//! ===============================================
+/* async function getPokemonById(id) {
+  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+  const res = await fetch(url);
+  const pokemon = await res.json();
+  return pokemon;
+} */
+
+/* async function getPokemons() {
+  for (let i = 1; i <= 10; i++) {
+    const pokemon = await getPokemonById(i);
+    console.log(pokemon);
+  }
+} */
+
+/* async function getPokemons() {
+  const promises = [];
+  for (let i = 1; i <= 10; i++) {
+    const pokemonPromise = getPokemonById(i);
+    promises.push(pokemonPromise);
+  }
+  const result = await Promise.all(promises);
+  console.log(result);
+}
+getPokemons(); */
+
+//! ===============================================
