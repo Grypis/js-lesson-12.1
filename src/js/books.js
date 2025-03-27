@@ -66,7 +66,9 @@ async function onBookUpdate(e) {
     oldBook.remove();
 
     e.target.reset();
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function onBookReset(e) {
@@ -89,7 +91,9 @@ async function onBookReset(e) {
     const markup = bookTemplate(res);
     oldBook.insertAdjacentHTML('afterend', markup);
     oldBook.remove();
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 
   e.target.reset();
 }
@@ -100,7 +104,9 @@ async function onBookDelete(e) {
     await deleteBook(id);
     const li = e.target.closest('li');
     li.remove();
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 
   e.target.reset();
 }
@@ -113,7 +119,9 @@ async function init() {
     const data = await getAllBooks();
     const markup = booksTemplate(data);
     refs.bookListElem.innerHTML = markup;
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 
   hideLoader();
 }

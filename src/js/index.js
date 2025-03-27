@@ -158,3 +158,43 @@ getPokemons(); */
 getPokemons(); */
 
 //! ===============================================
+/* async function getNews() {
+  const baseURL = '';
+  const endPoint = '';
+  const url = baseURL + endPoint;
+
+  const params = {
+    param1: '1',
+    param2: '2',
+    param3: '3',
+  };
+  const headers = {
+    key1: 'value',
+  };
+
+  const res = await axios.get();
+  return res.data;
+} */
+
+//! =========================
+async function getNews(query) {
+  const baseURL = 'https://newsapi.org/v2';
+  const endPoint = '/everything';
+  const url = baseURL + endPoint;
+
+  const params = {
+    q: query,
+    language: 'en',
+  };
+  const headers = {
+    'X-Api-Key': '13fd58a9941f4ecbbb0e5d0dbbde037c',
+  };
+
+  const res = await axios.get(url, { headers, params });
+  return res.data;
+}
+
+getNews('Bitcoin');
+getNews('USDT');
+
+//! =====================================
