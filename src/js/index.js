@@ -187,7 +187,7 @@ async function getNews(query) {
     language: 'en',
   };
   const headers = {
-    'X-Api-Key': '13fd58a9941f4ecbbb0e5d0dbbde037c',
+    'X-Api-Key': '',
   };
 
   const res = await axios.get(url, { headers, params });
